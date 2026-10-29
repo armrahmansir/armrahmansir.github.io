@@ -1,1 +1,685 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#070b14">
+  <meta name="description" content="ARM Rahman Sir — ARM Developer Zone. Developer portfolio, projects, skills and digital experiences.">
+  <title>ARM Rahman Sir | Developer Zone</title>
+
+  <style>
+    :root {
+      --bg: #070b14;
+      --panel: #0d1422;
+      --panel2: #101b2d;
+      --blue: #24c8ff;
+      --cyan: #73e6ff;
+      --text: #edf6ff;
+      --muted: #94a7bc;
+      --border: rgba(104, 183, 230, .17);
+      --radius: 18px;
+      --max: 1160px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+
+    body {
+      background:
+        radial-gradient(ellipse at 85% 10%, rgba(0, 150, 255, .10), transparent 35%),
+        radial-gradient(ellipse at 10% 55%, rgba(28, 91, 180, .08), transparent 35%),
+        var(--bg);
+      color: var(--text);
+      font-family: Inter, "Segoe UI", Arial, sans-serif;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+
+    .container { width: min(var(--max), 90%); margin: auto; }
+
+    .top-line {
+      position: fixed;
+      inset: 0 auto auto 0;
+      width: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--blue), #8e7bff);
+      z-index: 1000;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(7, 11, 20, .88);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 15px;
+      font-weight: 850;
+      letter-spacing: 1px;
+    }
+
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--blue);
+      border-radius: 12px;
+      color: var(--blue);
+      background: rgba(36, 200, 255, .07);
+      box-shadow: 0 0 22px rgba(36, 200, 255, .10);
+      font-weight: 950;
+    }
+
+    .brand small {
+      display: block;
+      color: var(--muted);
+      font-size: 10px;
+      letter-spacing: 2px;
+      font-weight: 600;
+    }
+
+    .nav-links { display: flex; align-items: center; gap: 24px; }
+
+    .nav-links a {
+      font-size: 13px;
+      color: var(--muted);
+      transition: .25s;
+    }
+
+    .nav-links a:hover, .nav-links a.active { color: var(--blue); }
+
+    .menu-btn {
+      display: none;
+      background: var(--panel);
+      color: var(--text);
+      border: 1px solid var(--border);
+      padding: 7px 12px;
+      border-radius: 9px;
+      cursor: pointer;
+    }
+
+    .hero {
+      min-height: 690px;
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      align-items: center;
+      gap: 60px;
+      padding: 95px 0 100px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      border: 1px solid var(--border);
+      background: rgba(36, 200, 255, .045);
+      border-radius: 100px;
+      padding: 7px 14px;
+      color: var(--cyan);
+      font-size: 11px;
+      font-weight: 750;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .dot {
+      width: 7px;
+      height: 7px;
+      background: #4ee6a8;
+      border-radius: 50%;
+      box-shadow: 0 0 12px #4ee6a8;
+    }
+
+    h1 {
+      font-size: clamp(42px, 6.3vw, 76px);
+      line-height: 1.09;
+      letter-spacing: -3px;
+      margin: 25px 0 20px;
+    }
+
+    .gradient {
+      background: linear-gradient(100deg, #fff 5%, var(--blue) 55%, #8b9cff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero p {
+      max-width: 590px;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 13px; margin-top: 30px; }
+
+    .btn {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 9px;
+      padding: 12px 20px;
+      border-radius: 11px;
+      font-size: 13px;
+      font-weight: 750;
+      border: 1px solid var(--border);
+      transition: transform .25s, box-shadow .25s, background .25s;
+      cursor: pointer;
+    }
+
+    .btn:hover { transform: translateY(-3px); }
+
+    .btn-primary {
+      background: var(--blue);
+      color: #04101b;
+      border-color: var(--blue);
+      box-shadow: 0 8px 28px rgba(36, 200, 255, .14);
+    }
+
+    .btn-secondary { background: rgba(255,255,255,.025); }
+    .btn-secondary:hover { border-color: var(--blue); }
+
+    .hero-meta {
+      display: flex;
+      gap: 25px;
+      flex-wrap: wrap;
+      margin-top: 35px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .hero-meta strong { color: var(--text); }
+
+    .core-wrap { display: grid; place-items: center; }
+
+    .core {
+      width: min(340px, 72vw);
+      aspect-ratio: 1;
+      display: grid;
+      place-items: center;
+      position: relative;
+      border: 1px solid rgba(36, 200, 255, .22);
+      border-radius: 32%;
+      background:
+        radial-gradient(circle, rgba(36, 200, 255, .13), transparent 57%),
+        linear-gradient(145deg, #101c2e, #070b14);
+      box-shadow: 0 0 80px rgba(36, 200, 255, .08), inset 0 0 60px rgba(36, 200, 255, .035);
+      transform: rotate(-4deg);
+    }
+
+    .core::before, .core::after {
+      content: "";
+      position: absolute;
+      inset: -20px;
+      border: 1px solid rgba(36, 200, 255, .23);
+      border-radius: 35%;
+      animation: orbit 22s linear infinite;
+    }
+
+    .core::after {
+      inset: -38px;
+      border-style: dashed;
+      opacity: .45;
+      animation-direction: reverse;
+      animation-duration: 35s;
+    }
+
+    .core-inner { text-align: center; transform: rotate(4deg); }
+
+    .core-logo {
+      font-size: clamp(65px, 9vw, 100px);
+      line-height: 1.2;
+      font-weight: 950;
+      letter-spacing: -8px;
+      color: var(--blue);
+      text-shadow: 0 0 40px rgba(36, 200, 255, .35);
+    }
+
+    .core-inner span {
+      display: block;
+      font-size: 11px;
+      letter-spacing: 4px;
+      color: var(--muted);
+    }
+
+    .core-caption {
+      margin-top: 48px;
+      font-size: 11px;
+      color: var(--cyan);
+      letter-spacing: 2px;
+      text-align: center;
+    }
+
+    @keyframes orbit { to { transform: rotate(360deg); } }
+
+    section { padding: 88px 0; border-top: 1px solid rgba(104, 183, 230, .09); }
+
+    .section-head { margin-bottom: 35px; }
+
+    .section-label {
+      color: var(--blue);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    h2 { font-size: clamp(28px, 4vw, 42px); letter-spacing: -1.2px; line-height: 1.25; margin: 8px 0 12px; }
+    .section-desc { color: var(--muted); max-width: 650px; font-size: 14px; }
+
+    .about-grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: 24px; }
+
+    .panel, .card {
+      background: linear-gradient(145deg, rgba(16, 27, 45, .92), rgba(10, 17, 29, .92));
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 27px;
+    }
+
+    .panel p { color: var(--muted); font-size: 14px; margin-top: 12px; }
+
+    .info-list { display: grid; gap: 17px; }
+
+    .info-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 12px;
+      font-size: 13px;
+    }
+
+    .info-row:last-child { border: 0; padding-bottom: 0; }
+    .info-row span { color: var(--muted); }
+    .info-row strong { text-align: right; }
+
+    .skills-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; }
+
+    .skill {
+      text-align: center;
+      padding: 23px 12px;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      transition: .25s;
+    }
+
+    .skill:hover { transform: translateY(-5px); border-color: var(--blue); }
+
+    .skill-icon { font-size: 27px; margin-bottom: 8px; }
+    .skill strong { display: block; font-size: 13px; }
+    .skill small { color: var(--muted); font-size: 11px; }
+
+    .projects-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+
+    .project { display: flex; flex-direction: column; min-height: 260px; transition: .25s; }
+    .project:hover { transform: translateY(-5px); border-color: rgba(36, 200, 255, .5); }
+
+    .project-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+    .project-icon { font-size: 25px; }
+    .project-type { font-size: 10px; letter-spacing: 1px; color: var(--blue); }
+    .project h3 { font-size: 19px; margin: 18px 0 8px; }
+    .project p { color: var(--muted); font-size: 13px; flex: 1; }
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 18px 0; }
+    .tag { border: 1px solid var(--border); background: rgba(36,200,255,.05); padding: 3px 9px; border-radius: 6px; font-size: 10px; color: var(--cyan); }
+    .project-link { color: var(--blue); font-size: 12px; font-weight: 750; }
+
+    .github-panel { text-align: center; padding: 42px 25px; }
+    .github-symbol { font-size: 40px; }
+    .github-panel p { max-width: 600px; margin: 12px auto 25px; color: var(--muted); font-size: 14px; }
+    .github-actions { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
+
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; }
+    .contact-links { display: grid; gap: 12px; margin-top: 20px; }
+
+    .contact-link {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 15px;
+      border: 1px solid var(--border);
+      border-radius: 11px;
+      background: rgba(255,255,255,.015);
+      font-size: 13px;
+    }
+
+    .contact-link span { color: var(--muted); }
+    .contact-link:hover { border-color: var(--blue); }
+
+    .contact-note { color: var(--muted); font-size: 13px; margin-top: 12px; }
+
+    footer { padding: 27px 0; border-top: 1px solid var(--border); }
+    .footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 15px; flex-wrap: wrap; color: var(--muted); font-size: 11px; }
+    .footer-inner strong { color: var(--blue); }
+
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s, transform .6s; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .01ms !important; scroll-behavior: auto !important; transition-duration: .01ms !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+
+    @media (max-width: 850px) {
+      .hero { grid-template-columns: 1fr; text-align: center; gap: 75px; padding-top: 80px; }
+      .hero p { margin: auto; }
+      .hero-actions, .hero-meta { justify-content: center; }
+      .core-wrap { margin: 10px 0; }
+      .about-grid { grid-template-columns: 1fr; }
+      .skills-grid { grid-template-columns: repeat(3, 1fr); }
+      .nav-links { gap: 14px; }
+    }
+
+    @media (max-width: 620px) {
+      .nav { min-height: 68px; }
+      .menu-btn { display: block; }
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 68px;
+        left: 0;
+        right: 0;
+        padding: 20px 5%;
+        background: #090f1b;
+        border-bottom: 1px solid var(--border);
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+      }
+      .nav-links.open { display: flex; }
+      .nav-links a { padding: 11px 0; }
+      h1 { letter-spacing: -2px; }
+      section { padding: 65px 0; }
+      .skills-grid { grid-template-columns: repeat(2, 1fr); }
+      .projects-grid, .contact-grid { grid-template-columns: 1fr; }
+      .panel, .card { padding: 21px; }
+      .footer-inner { justify-content: center; text-align: center; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="top-line" id="topLine"></div>
+
+  <header>
+    <nav class="nav container" aria-label="Main navigation">
+      <a href="#home" class="brand">
+        <span class="brand-mark">ARM</span>
+        <span>ARM RAHMAN SIR<small>DEVELOPER ZONE</small></span>
+      </a>
+
+      <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navLinks">☰ Menu</button>
+
+      <div class="nav-links" id="navLinks">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#github">GitHub</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="container hero" id="home">
+      <div class="hero-content">
+        <div class="eyebrow"><span class="dot"></span> Welcome to my digital space</div>
+
+        <h1>Hi, I'm<br><span class="gradient">ARM Rahman Sir.</span></h1>
+
+        <p>
+          Welcome to <strong>ARM Developer Zone</strong> — a personal portfolio
+          dedicated to development, creative technology, modern web experiences
+          and turning ideas into digital projects.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#projects">Explore Projects ↗</a>
+          <a class="btn btn-secondary" href="#contact">Get in Touch</a>
+        </div>
+
+        <div class="hero-meta">
+          <span>⌘ <strong>Creative Development</strong></span>
+          <span>◈ <strong>Continuous Learning</strong></span>
+        </div>
+      </div>
+
+      <div class="core-wrap">
+        <div>
+          <div class="core">
+            <div class="core-inner">
+              <div class="core-logo">ARM</div>
+              <span>DEVELOPER ZONE</span>
+            </div>
+          </div>
+          <div class="core-caption">BUILD · CREATE · INNOVATE</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container reveal">
+        <div class="section-head">
+          <div class="section-label">01 / About</div>
+          <h2>Building ideas into <span class="gradient">reality.</span></h2>
+          <p class="section-desc">A little introduction to me and my development journey.</p>
+        </div>
+
+        <div class="about-grid">
+          <div class="panel">
+            <h3>👨‍💻 About ARM Developer Zone</h3>
+            <p>
+              I'm ARM Rahman Sir. This is my personal space for showcasing
+              projects, exploring technology and sharing the things I build.
+              My goal is to keep learning, experiment with ideas and create
+              useful digital experiences.
+            </p>
+            <p>
+              I am interested in web development, interface design, AI tools,
+              automation and creative software projects.
+            </p>
+          </div>
+
+          <div class="panel info-list">
+            <div class="info-row"><span>Brand</span><strong>ARM Developer Zone</strong></div>
+            <div class="info-row"><span>Profile</span><strong>ARM Rahman Sir</strong></div>
+            <div class="info-row"><span>Interests</span><strong>Development & Technology</strong></div>
+            <div class="info-row"><span>GitHub</span><strong>@armrahmansir</strong></div>
+            <div class="info-row"><span>Availability</span><strong>Open to connect</strong></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container reveal">
+        <div class="section-head">
+          <div class="section-label">02 / Skills & Tools</div>
+          <h2>My technology <span class="gradient">stack.</span></h2>
+          <p class="section-desc">Technologies and tools I am interested in working with. This list can be customized to reflect my actual experience.</p>
+        </div>
+
+        <div class="skills-grid">
+          <div class="skill"><div class="skill-icon">🌐</div><strong>HTML5</strong><small>Web Structure</small></div>
+          <div class="skill"><div class="skill-icon">🎨</div><strong>CSS3</strong><small>Visual Design</small></div>
+          <div class="skill"><div class="skill-icon">⚡</div><strong>JavaScript</strong><small>Interactivity</small></div>
+          <div class="skill"><div class="skill-icon">🐍</div><strong>Python</strong><small>Programming</small></div>
+          <div class="skill"><div class="skill-icon">⚛️</div><strong>React</strong><small>UI Development</small></div>
+          <div class="skill"><div class="skill-icon">🔷</div><strong>C# / .NET</strong><small>Software</small></div>
+          <div class="skill"><div class="skill-icon">🐙</div><strong>GitHub</strong><small>Repositories</small></div>
+          <div class="skill"><div class="skill-icon">🛠️</div><strong>VS Code</strong><small>Development Tool</small></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container reveal">
+        <div class="section-head">
+          <div class="section-label">03 / Selected Work</div>
+          <h2>Featured <span class="gradient">projects.</span></h2>
+          <p class="section-desc">Explore my work. Replace these starter cards with your real repositories as you publish projects.</p>
+        </div>
+
+        <div class="projects-grid">
+          <article class="card project">
+            <div class="project-top"><span class="project-icon">◈</span><span class="project-type">WEB DEVELOPMENT</span></div>
+            <h3>Portfolio Website</h3>
+            <p>A personal website showcasing my brand, skills and digital projects.</p>
+            <div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span></div>
+            <a class="project-link" href="https://github.com/armrahmansir/armrahmansir.github.io" target="_blank" rel="noopener noreferrer">View Repository ↗</a>
+          </article>
+
+          <article class="card project">
+            <div class="project-top"><span class="project-icon">⌘</span><span class="project-type">AI & AUTOMATION</span></div>
+            <h3>JARVIS BD</h3>
+            <p>A personal AI assistant concept focused on desktop productivity, tools and automation.</p>
+            <div class="tags"><span class="tag">AI</span><span class="tag">Automation</span><span class="tag">Research</span></div>
+            <a class="project-link" href="https://github.com/armrahmansir?tab=repositories">Explore My Repositories ↗</a>
+          </article>
+
+          <article class="card project">
+            <div class="project-top"><span class="project-icon">✦</span><span class="project-type">COMMUNITY TOOLS</span></div>
+            <h3>ARM Coding BD</h3>
+            <p>A project concept for community tools and Discord server experiences.</p>
+            <div class="tags"><span class="tag">Discord</span><span class="tag">Community</span></div>
+            <a class="project-link" href="https://github.com/armrahmansir?tab=repositories">Explore My Repositories ↗</a>
+          </article>
+
+          <article class="card project">
+            <div class="project-top"><span class="project-icon">↗</span><span class="project-type">MORE PROJECTS</span></div>
+            <h3>Explore My Work</h3>
+            <p>Discover other projects, experiments and repositories on my GitHub profile.</p>
+            <div class="tags"><span class="tag">Open Source</span><span class="tag">Experiments</span></div>
+            <a class="project-link" href="https://github.com/armrahmansir?tab=repositories">Browse All Projects ↗</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="github">
+      <div class="container reveal">
+        <div class="section-head">
+          <div class="section-label">04 / GitHub</div>
+          <h2>Code, projects & <span class="gradient">contributions.</span></h2>
+          <p class="section-desc">Visit my GitHub profile to explore published repositories and contribution activity.</p>
+        </div>
+
+        <div class="panel github-panel">
+          <div class="github-symbol">⌘</div>
+          <h3>ARM Rahman Sir on GitHub</h3>
+          <p>Explore my repositories, follow my progress and discover the projects I share with the developer community.</p>
+          <div class="github-actions">
+            <a class="btn btn-primary" href="https://github.com/armrahmansir" target="_blank" rel="noopener noreferrer">Visit GitHub ↗</a>
+            <a class="btn btn-secondary" href="https://github.com/armrahmansir?tab=repositories" target="_blank" rel="noopener noreferrer">View Repositories</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container reveal">
+        <div class="section-head">
+          <div class="section-label">05 / Contact</div>
+          <h2>Let's connect and <span class="gradient">create.</span></h2>
+          <p class="section-desc">Have an idea, a project or a collaboration in mind? Connect with me through my public profiles.</p>
+        </div>
+
+        <div class="contact-grid">
+          <div class="panel">
+            <h3>🤝 Get in Touch</h3>
+            <p class="contact-note">GitHub is the best starting point. Add your verified email or social links here when you are ready.</p>
+            <div class="contact-links">
+              <a class="contact-link" href="https://github.com/armrahmansir" target="_blank" rel="noopener noreferrer"><strong>GitHub</strong><span>@armrahmansir ↗</span></a>
+              <a class="contact-link" href="https://github.com/armrahmansir?tab=repositories" target="_blank" rel="noopener noreferrer"><strong>Projects</strong><span>Browse repositories ↗</span></a>
+            </div>
+          </div>
+
+          <div class="panel">
+            <h3>💡 Let's Build Something</h3>
+            <p class="contact-note">I believe great projects start with curiosity, creativity and a willingness to learn. Follow my GitHub to see new work as I publish it.</p>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="https://github.com/armrahmansir" target="_blank" rel="noopener noreferrer">Connect on GitHub ↗</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <span>© <span id="year"></span> <strong>ARM Rahman Sir</strong> · ARM Developer Zone</span>
+      <a href="#home">Back to top ↑</a>
+      <span>Built with curiosity & technology.</span>
+    </div>
+  </footer>
+
+  <script>
+    const menuBtn = document.getElementById("menuBtn");
+    const navLinks = document.getElementById("navLinks");
+    const topLine = document.getElementById("topLine");
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    menuBtn.addEventListener("click", () => {
+      const isOpen = navLinks.classList.toggle("open");
+      menuBtn.setAttribute("aria-expanded", String(isOpen));
+      menuBtn.textContent = isOpen ? "✕ Close" : "☰ Menu";
+    });
+
+    navLinks.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("open");
+        menuBtn.setAttribute("aria-expanded", "false");
+        menuBtn.textContent = "☰ Menu";
+      });
+    });
+
+    function updateScrollProgress() {
+      const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0;
+      topLine.style.width = progress + "%";
+    }
+
+    window.addEventListener("scroll", updateScrollProgress, { passive: true });
+    updateScrollProgress();
+
+    if ("IntersectionObserver" in window) {
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+
+      document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+    } else {
+      document.querySelectorAll(".reveal").forEach(el => el.classList.add("visible"));
+    }
+  </script>
+</body>
+</html>
+
